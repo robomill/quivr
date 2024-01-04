@@ -30,12 +30,12 @@ def check_user_requests_limit(user: UserIdentity, model: str):
 
     daily_chat_credit = userSettings.get("daily_chat_credit", 0)
     daily_user_count = userDailyUsage.get_user_daily_usage(date)
-    models_price = userDailyUsage.get_model_settings()
-    user_choosen_model_price = 1000
+    models_price = []
+    user_choosen_model_price = 0
 
     for model_setting in models_price:
         if model_setting["name"] == model:
-            user_choosen_model_price = model_setting["price"]
+            user_choosen_model_price = 0
     print(f"User {user.id} has {daily_user_count} requests for today")
     print(f"User {user.id} has {daily_chat_credit} daily chat credit")
     print(f"User {user.id} has {user_choosen_model_price} price for the model")

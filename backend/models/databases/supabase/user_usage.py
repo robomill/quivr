@@ -16,7 +16,7 @@ class UserUsage(Repository):
     ):
         return (
             self.db.table("user_daily_usage")
-            .insert(
+            .upsert(
                 {
                     "user_id": str(user_id),
                     "email": user_email,
